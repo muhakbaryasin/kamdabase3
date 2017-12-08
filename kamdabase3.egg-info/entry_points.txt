@@ -1,0 +1,5 @@
+      [paste.app_factory]
+      main = kamdabase3:main
+      [console_scripts]
+      initialize_kamdabase3_db = kamdabase3.scripts.initializedb:main
+      

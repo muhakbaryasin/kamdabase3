@@ -1,0 +1,3 @@
+[run]
+source = kamdabase3
+omit = kamdabase3/test*

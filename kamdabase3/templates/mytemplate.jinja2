@@ -1,0 +1,51 @@
+{% extends "layout.jinja2" %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+		<h1>Ovarium Cancer Patients in New Jerser in 2010</h1>
+		<table id="table" border="1" cellpadding="2" width="80%">
+			<thead>
+				<tr align="center">
+					<td colspan="2" rowspan="2">&nbsp;</td>
+					<td rowspan="2">total #discharges</td>
+					<td colspan="7">Race / Ethnicity</td>
+				</tr>
+				<tr align="center">
+					{% for per_ in race %}
+						<td>{{per_}}</td>
+					{% endfor %}				
+				</tr>
+			</thead>
+			<tbody>
+				{% for item in content %}
+				<tr>
+					{% if item == '1-17'%}
+						<td rowspan="10">Age group</td>
+					{% endif %}
+					<td>{{item}}</td>
+					
+					{% if content[item]['total'] is defined and content[item]['total'] is gt 10 %}
+							<td>{{content[item]['total']}}</td>
+					{% else %}
+							<td>*</td>
+					{% endif %}
+					
+					{% for per_ in race %}
+						{% if content[item][per_] is defined and content[item][per_] is gt 10 %}
+							<td>{{content[item][per_]}}</td>
+						{% else %}
+							<td>*</td>
+						{% endif %}
+					{% endfor %}
+				<tr>
+				{% endfor %}
+				</tr>
+			</tbody>
+		</table>
+		
+		</div>
+	</div>
+</div>
+{% endblock content %}
